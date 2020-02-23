@@ -1,4 +1,4 @@
-package com.meli.dnadetector.service;
+package com.meli.dnadetector.service.processor;
 
 import org.springframework.stereotype.Service;
 

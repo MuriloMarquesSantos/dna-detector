@@ -1,5 +1,6 @@
 package com.meli.dnadetector.service;
 
+import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import org.junit.jupiter.api.Test;
 
 import static com.meli.dnadetector.service.DnaProcessorTestHelper.*;

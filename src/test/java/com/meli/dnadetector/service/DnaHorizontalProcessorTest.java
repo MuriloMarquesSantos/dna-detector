@@ -1,5 +1,6 @@
 package com.meli.dnadetector.service;
 
+import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
