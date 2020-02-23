@@ -5,15 +5,16 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 @Service
-public class DnaHorizontalProcessor {
+public class DnaHorizontalProcessor implements DnaProcessable {
 
     public boolean processDna(String[] dna) {
-        return Arrays.stream(dna).anyMatch(this::processDnaRow);
+        return Arrays.stream(dna).anyMatch(this::validateDna);
     }
 
-    private boolean processDnaRow(String dnaRow) {
-        return dnaRow.charAt(0) == dnaRow.charAt(1) &&
-                dnaRow.charAt(0) == dnaRow.charAt(2) &&
-                dnaRow.charAt(0) == dnaRow.charAt(3);
+    private boolean validateDna(String dnaRow) {
+        return dnaRow.contains("AAAAA") ||
+                dnaRow.contains("TTTT") ||
+                dnaRow.contains("CCCC") ||
+                dnaRow.contains("GGGG");
     }
 }
