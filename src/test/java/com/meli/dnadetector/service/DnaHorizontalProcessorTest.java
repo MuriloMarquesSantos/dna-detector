@@ -2,19 +2,14 @@ package com.meli.dnadetector.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import static com.meli.dnadetector.service.DnaProcessorTestHelper.invalidSimianDna;
 import static com.meli.dnadetector.service.DnaProcessorTestHelper.validSimianDna;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DnaHorizontalProcessorTest {
 
-    @Mock
     DnaHorizontalProcessor dnaHorizontalProcessor;
 
     @BeforeEach

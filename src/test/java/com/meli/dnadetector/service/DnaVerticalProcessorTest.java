@@ -1,9 +1,10 @@
 package com.meli.dnadetector.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.meli.dnadetector.service.DnaProcessorTestHelper.invalidSimianDna;
 import static com.meli.dnadetector.service.DnaProcessorTestHelper.validSimianDna;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DnaVerticalProcessorTest {
@@ -11,13 +12,13 @@ class DnaVerticalProcessorTest {
 
     private DnaVerticalProcessor dnaVerticalProcessor = new DnaVerticalProcessor();
 
-    @BeforeEach
-    void setUp() {
-
+    @Test
+    void processDnaWithValidEntries_thenShouldReturnTrue() {
+        assertTrue(dnaVerticalProcessor.processDna(validSimianDna));
     }
 
     @Test
-    void processDna() {
-        assertTrue(dnaVerticalProcessor.processDna(validSimianDna));
+    void processDnaWithInvalidEntries_thenShouldReturnFalse() {
+        assertFalse(dnaVerticalProcessor.processDna(invalidSimianDna));
     }
 }
