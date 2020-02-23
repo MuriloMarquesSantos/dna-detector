@@ -2,7 +2,6 @@ package com.meli.dnadetector.service;
 
 import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
-import com.meli.dnadetector.service.processor.DnaProcessable;
 import com.meli.dnadetector.service.processor.DnaVerticalProcessor;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ public class DnaService {
     private DnaDiagonalProcessor dnaDiagonalProcessor;
 
     public boolean isSimian(String[] dna) {
-        System.out.println("something");
-        return false;
+       return (dnaHorizontalProcessor.processDna(dna) || dnaVerticalProcessor.processDna(dna) || dnaDiagonalProcessor.processDna(dna));
     }
 }
