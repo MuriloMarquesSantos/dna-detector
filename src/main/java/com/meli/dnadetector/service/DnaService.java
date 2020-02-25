@@ -7,9 +7,11 @@ import com.meli.dnadetector.repository.DnaRepository;
 import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
 import com.meli.dnadetector.service.processor.DnaVerticalProcessor;
-import com.meli.dnadetector.utils.DnaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import static com.meli.dnadetector.utils.DnaMapper.createDnaArrayFromString;
+import static com.meli.dnadetector.utils.DnaMapper.getDnaStringFromArray;
 
 @Service
 @AllArgsConstructor
@@ -27,12 +29,12 @@ public class DnaService {
         Boolean isSimian = getIsSimian(dna);
 
         Dna savedDna = dnaRepository.save(Dna.builder()
-                .dna(DnaMapper.getDnaStringFromArray(dnaRequest.getDna()))
+                .dna(getDnaStringFromArray(dnaRequest.getDna()))
                 .isSimian(isSimian)
                 .build());
 
         return DnaResponse.builder()
-                .dna(DnaMapper.createDnaArrayFromString(savedDna.getDna()))
+                .dna(createDnaArrayFromString(savedDna.getDna()))
                 .isSimian(savedDna.getIsSimian())
                 .build();
     }
