@@ -1,11 +1,11 @@
-package com.meli.dnadetector.service;
+package com.meli.dnadetector.service.unit.processor;
 
 import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.meli.dnadetector.service.DnaProcessorTestHelper.invalidSimianDna;
-import static com.meli.dnadetector.service.DnaProcessorTestHelper.validSimianDna;
+import static com.meli.dnadetector.service.unit.DnaTestHelper.invalidSimianDna;
+import static com.meli.dnadetector.service.unit.DnaTestHelper.validSimianDna;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

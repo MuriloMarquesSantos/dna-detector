@@ -1,9 +1,9 @@
-package com.meli.dnadetector.service;
+package com.meli.dnadetector.service.unit.processor;
 
 import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import org.junit.jupiter.api.Test;
 
-import static com.meli.dnadetector.service.DnaProcessorTestHelper.*;
+import static com.meli.dnadetector.service.unit.DnaTestHelper.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

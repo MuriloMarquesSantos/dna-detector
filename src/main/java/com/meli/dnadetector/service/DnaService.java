@@ -32,6 +32,10 @@ public class DnaService {
 
         Dna savedDna = saveDna(dnaRequest, isSimian);
 
+        if (!savedDna.getIsSimian()) {
+            throw new RuntimeException("Not a simian");
+        }
+
         return DnaResponse.builder()
                 .dna(createDnaArrayFromString(savedDna.getDna()))
                 .isSimian(savedDna.getIsSimian())
@@ -45,6 +49,10 @@ public class DnaService {
                 });
     }
 
+    private boolean getIsSimian(String[] dna) {
+        return dnaHorizontalProcessor.isSimian(dna) || dnaVerticalProcessor.isSimian(dna) || dnaDiagonalProcessor.isSimian(dna);
+    }
+
     private Dna saveDna(DnaRequest dnaRequest, Boolean isSimian) {
         return dnaRepository.save(Dna.builder()
                 .dna(getDnaStringFromArray(dnaRequest.getDna()))
@@ -52,7 +60,4 @@ public class DnaService {
                 .build());
     }
 
-    private boolean getIsSimian(String[] dna) {
-        return dnaHorizontalProcessor.isSimian(dna) || dnaVerticalProcessor.isSimian(dna) || dnaDiagonalProcessor.isSimian(dna);
-    }
 }
