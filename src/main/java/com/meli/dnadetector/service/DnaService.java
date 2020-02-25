@@ -46,7 +46,7 @@ public class DnaService {
     private void checkIfDnaExists(String[] dna) {
         dnaRepository.findByDna(getDnaStringFromArray(dna))
                 .ifPresent(s -> {
-                    throw new RuntimeException("Dna already registered");
+                    throw new RuntimeException("You can't submit a Dna that has already been registered");
                 });
     }
 
