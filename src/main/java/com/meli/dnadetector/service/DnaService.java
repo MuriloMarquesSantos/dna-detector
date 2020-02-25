@@ -3,6 +3,7 @@ package com.meli.dnadetector.service;
 import com.meli.dnadetector.dto.DnaRequest;
 import com.meli.dnadetector.dto.DnaResponse;
 import com.meli.dnadetector.entity.Dna;
+import com.meli.dnadetector.exception.NotSimianException;
 import com.meli.dnadetector.repository.DnaRepository;
 import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
@@ -33,7 +34,7 @@ public class DnaService {
         Dna savedDna = saveDna(dnaRequest, isSimian);
 
         if (!savedDna.getIsSimian()) {
-            throw new RuntimeException("Not a simian");
+            throw new NotSimianException();
         }
 
         return DnaResponse.builder()

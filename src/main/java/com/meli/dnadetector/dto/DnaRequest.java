@@ -26,7 +26,7 @@ public class DnaRequest {
         Arrays.stream(dna).filter(dnaPart ->  !(dnaPart.length() == 6) || !StringUtils.containsOnly(dnaPart, "A, T, C, G"))
                 .findAny()
                 .ifPresent(s -> {
-                    throw new RuntimeException("Invalid format of Dna");
+                    throw new RuntimeException("Invalid format of Dna, please fix and try again");
                 });
     }
 }
