@@ -26,17 +26,30 @@ public class DnaService {
     public DnaResponse isSimian(DnaRequest dnaRequest) {
         String[] dna = dnaRequest.getDna();
 
+        checkIfDnaExists(dna);
+
         Boolean isSimian = getIsSimian(dna);
 
-        Dna savedDna = dnaRepository.save(Dna.builder()
-                .dna(getDnaStringFromArray(dnaRequest.getDna()))
-                .isSimian(isSimian)
-                .build());
+        Dna savedDna = saveDna(dnaRequest, isSimian);
 
         return DnaResponse.builder()
                 .dna(createDnaArrayFromString(savedDna.getDna()))
                 .isSimian(savedDna.getIsSimian())
                 .build();
+    }
+
+    private void checkIfDnaExists(String[] dna) {
+        dnaRepository.findByDna(getDnaStringFromArray(dna))
+                .ifPresent(s -> {
+                    throw new RuntimeException("Dna already registered");
+                });
+    }
+
+    private Dna saveDna(DnaRequest dnaRequest, Boolean isSimian) {
+        return dnaRepository.save(Dna.builder()
+                .dna(getDnaStringFromArray(dnaRequest.getDna()))
+                .isSimian(isSimian)
+                .build());
     }
 
     private boolean getIsSimian(String[] dna) {
