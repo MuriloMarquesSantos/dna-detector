@@ -7,7 +7,7 @@ import java.util.Arrays;
 @Service
 public class DnaHorizontalProcessor implements DnaProcessable {
 
-    public boolean processDna(String[] dna) {
+    public boolean isSimian(String[] dna) {
         return Arrays.stream(dna).anyMatch(this::validateDna);
     }
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DnaVerticalProcessor implements DnaProcessable {
 
-    public boolean processDna(String[] dna) {
+    public boolean isSimian(String[] dna) {
         char[] dnaBases = new char[dna.length];
 
         for (int i = 0; i < dna.length; i++) {

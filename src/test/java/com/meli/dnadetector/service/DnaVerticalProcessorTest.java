@@ -15,11 +15,11 @@ class DnaVerticalProcessorTest {
 
     @Test
     void processDnaWithValidEntries_thenShouldReturnTrue() {
-        assertTrue(dnaVerticalProcessor.processDna(validSimianDna));
+        assertTrue(dnaVerticalProcessor.isSimian(validSimianDna));
     }
 
     @Test
     void processDnaWithInvalidEntries_thenShouldReturnFalse() {
-        assertFalse(dnaVerticalProcessor.processDna(invalidSimianDna));
+        assertFalse(dnaVerticalProcessor.isSimian(invalidSimianDna));
     }
 }

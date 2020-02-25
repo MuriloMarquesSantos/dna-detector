@@ -13,13 +13,13 @@ class DnaDiagonalProcessorTest {
 
     @Test
     void processDnaWithValidEntries_thenShouldReturnTrue() {
-        assertTrue(diagonalProcessor.processDna(validDiagonalSimianDna1));
-        assertTrue(diagonalProcessor.processDna(validDiagonalSimianDna2));
-        assertTrue(diagonalProcessor.processDna(validDiagonalSimianDna3));
+        assertTrue(diagonalProcessor.isSimian(validDiagonalSimianDna1));
+        assertTrue(diagonalProcessor.isSimian(validDiagonalSimianDna2));
+        assertTrue(diagonalProcessor.isSimian(validDiagonalSimianDna3));
     }
 
     @Test
     void processDnaWithInvalidEntries_thenShouldReturnFalse() {
-        assertFalse(diagonalProcessor.processDna(invalidSimianDna));
+        assertFalse(diagonalProcessor.isSimian(invalidSimianDna));
     }
 }

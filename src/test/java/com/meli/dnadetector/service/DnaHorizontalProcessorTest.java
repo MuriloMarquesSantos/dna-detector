@@ -20,11 +20,11 @@ class DnaHorizontalProcessorTest {
 
     @Test
     void processDnaWithValidEntry_thenShouldReturnTrue() {
-        assertTrue(dnaHorizontalProcessor.processDna(validSimianDna));
+        assertTrue(dnaHorizontalProcessor.isSimian(validSimianDna));
     }
 
     @Test
     void processDnaWithInValidEntry_thenShouldReturnFalse() {
-        assertFalse(dnaHorizontalProcessor.processDna(invalidSimianDna));
+        assertFalse(dnaHorizontalProcessor.isSimian(invalidSimianDna));
     }
 }

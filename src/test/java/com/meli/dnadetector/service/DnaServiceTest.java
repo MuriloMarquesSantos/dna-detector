@@ -35,37 +35,37 @@ class DnaServiceTest {
 
     @Test
     void isSimian_whenHorizontalProcessorReturnsTrue_then_ShouldReturnTrue() {
-        when(dnaHorizontalProcessor.processDna(any())).thenReturn(Boolean.TRUE);
+        when(dnaHorizontalProcessor.isSimian(any())).thenReturn(Boolean.TRUE);
         assertTrue(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 
     @Test
     void isSimian_whenHorizontalProcessorReturnsFalse_then_ShouldReturnFalse() {
-        when(dnaHorizontalProcessor.processDna(any())).thenReturn(Boolean.FALSE);
+        when(dnaHorizontalProcessor.isSimian(any())).thenReturn(Boolean.FALSE);
         assertFalse(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 
     @Test
     void isSimian_whenVerticalProcessorReturnsTrue_then_ShouldReturnTrue() {
-        when(dnaVerticalProcessor.processDna(any())).thenReturn(Boolean.TRUE);
+        when(dnaVerticalProcessor.isSimian(any())).thenReturn(Boolean.TRUE);
         assertTrue(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 
     @Test
     void isSimian_whenVerticalProcessorReturnsFalse_then_ShouldReturnFalse() {
-        when(dnaVerticalProcessor.processDna(any())).thenReturn(Boolean.FALSE);
+        when(dnaVerticalProcessor.isSimian(any())).thenReturn(Boolean.FALSE);
         assertFalse(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 
     @Test
     void isSimian_whenDiagonalProcessorReturnsTrue_then_ShouldReturnTrue() {
-        when(dnaDiagonalProcessor.processDna(any())).thenReturn(Boolean.TRUE);
+        when(dnaDiagonalProcessor.isSimian(any())).thenReturn(Boolean.TRUE);
         assertTrue(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 
     @Test
     void isSimian_whenDiagonalProcessorReturnsFalse_then_ShouldReturnFalse() {
-        when(dnaDiagonalProcessor.processDna(any())).thenReturn(Boolean.FALSE);
+        when(dnaDiagonalProcessor.isSimian(any())).thenReturn(Boolean.FALSE);
         assertFalse(dnaService.isSimian(SAMPLE_DNA_ARRAY));
     }
 }
