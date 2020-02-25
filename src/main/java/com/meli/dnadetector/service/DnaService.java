@@ -1,6 +1,7 @@
 package com.meli.dnadetector.service;
 
-import com.meli.dnadetector.dto.DnaDTO;
+import com.meli.dnadetector.dto.DnaRequest;
+import com.meli.dnadetector.dto.DnaResponse;
 import com.meli.dnadetector.service.processor.DnaDiagonalProcessor;
 import com.meli.dnadetector.service.processor.DnaHorizontalProcessor;
 import com.meli.dnadetector.service.processor.DnaVerticalProcessor;
@@ -15,8 +16,15 @@ public class DnaService {
     private DnaVerticalProcessor dnaVerticalProcessor;
     private DnaDiagonalProcessor dnaDiagonalProcessor;
 
-    public boolean isSimian(DnaDTO dnaDTO) {
-        String[] dna = dnaDTO.getDna();
-       return (dnaHorizontalProcessor.isSimian(dna) || dnaVerticalProcessor.isSimian(dna) || dnaDiagonalProcessor.isSimian(dna));
+    public DnaResponse isSimian(DnaRequest dnaRequest) {
+        String[] dna = dnaRequest.getDna();
+        boolean isSimian = false;
+
+       isSimian = (dnaHorizontalProcessor.isSimian(dna) || dnaVerticalProcessor.isSimian(dna) || dnaDiagonalProcessor.isSimian(dna));
+
+       return DnaResponse.builder()
+               .dna(dnaRequest.getDna())
+               .isSimian(isSimian)
+               .build();
     }
 }
