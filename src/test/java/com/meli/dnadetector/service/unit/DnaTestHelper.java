@@ -27,6 +27,10 @@ public class DnaTestHelper {
         return DnaRequest.builder().dna(validSimianDna).build();
     }
 
+    public static DnaRequest getInvalidDnaRequest() {
+        return DnaRequest.builder().dna(invalidSimianDna).build();
+    }
+
     public static Dna getInvalidEntityWithIsSimianFalse() {
         return Dna.builder().dna(getDnaStringFromArray(invalidSimianDna)).isSimian(false).build();
     }
@@ -45,6 +49,14 @@ public class DnaTestHelper {
                 .builder()
                 .isSimian(true)
                 .dna(validSimianDna)
+                .build();
+    }
+
+    public static DnaResponse getInvalidDnaResponse() {
+        return DnaResponse
+                .builder()
+                .isSimian(false)
+                .dna(invalidSimianDna)
                 .build();
     }
 }

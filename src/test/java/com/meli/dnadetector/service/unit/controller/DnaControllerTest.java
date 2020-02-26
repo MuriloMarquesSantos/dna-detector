@@ -2,6 +2,7 @@ package com.meli.dnadetector.service.unit.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.dnadetector.controller.DnaController;
+import com.meli.dnadetector.exception.NotSimianException;
 import com.meli.dnadetector.exception.ResponseExceptionHandler;
 import com.meli.dnadetector.service.DnaService;
 import com.meli.dnadetector.service.StatsService;
@@ -19,10 +20,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 
 import static com.meli.dnadetector.service.unit.DnaTestHelper.*;
+import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class DnaControllerTest {
@@ -60,6 +63,8 @@ public class DnaControllerTest {
 
         mockMvc.perform(get(DnaController.BASE_PATH + STATS_URL)
                 .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.count_mutant_dna", equalTo(getValidStatsResponse().getCount_mutant_dna())))
+                .andExpect(jsonPath("$.count_human_dna", equalTo(getValidStatsResponse().getCount_human_dna())))
                 .andExpect(status().isOk());
     }
 
@@ -71,5 +76,25 @@ public class DnaControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonObjectMapper.writeValueAsString(getValidDnaRequest())))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void performIsSimianWithoutRequiredArgs_then_ShouldThrowBadRequest() throws Exception {
+        when(dnaService.isSimian(any())).thenReturn(getValidDnaResponse());
+
+        mockMvc.perform(post(DnaController.BASE_PATH + SIMIAN_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonObjectMapper.writeValueAsString("")))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void performIsSimianWithInvalidDna_then_ShouldThrowForbidden() throws Exception {
+        when(dnaService.isSimian(any())).thenThrow(new NotSimianException());
+
+        mockMvc.perform(post(DnaController.BASE_PATH + SIMIAN_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonObjectMapper.writeValueAsString(getInvalidDnaRequest())))
+                .andExpect(status().isForbidden());
     }
 }
