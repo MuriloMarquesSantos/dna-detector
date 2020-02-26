@@ -34,7 +34,7 @@ Project
 - [Maven](https://maven.apache.org/) to manage the project's build, reporting and documentation from a central piece of information;
 - [Spring boot](https://spring.io/projects/spring-boot) for project setup and run;
 - [Lombok](https://projectlombok.org/) To help with some Java boilerplates such as: Getter, Setter, Constructor, etc.. Also automate the creation of a Builder;
-- [Model Mapper](http://modelmapper.org/) to make object mapping easy, by automatically determining how one object model maps to another, based on conventions;
+- [Apache Commons](https://commons.apache.org/) to deal with some of the String conversions.
 - [JUnit4](https://junit.org/junit4/) for unit tests;
 - [Mockito](https://site.mockito.org/) for general tests;
 - [MockMVC](https://spring.io/guides/gs/testing-web/) from Spring for Rest Tests;
