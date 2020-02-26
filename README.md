@@ -3,6 +3,8 @@ This project was created to satisfy Mercado Livre back-end challenge requirement
 
 Its purpose is to make possible to check mutations in DNAs. With it you will be able to send a DNA sample and check whether it belongs to a simian or to a human and also check its stats.
 
+Base URL: https://dna-detector.herokuapp.com/swagger-ui.html
+
 ### Tools
 
 This project is developed using the following technologies:
@@ -67,7 +69,7 @@ The project is 90% covered with tests.
 
 ## Swagger
 - Swagger is already configured in this project in SwaggerConfig.java.
-- The API can be seen at http://localhost:8081/swagger-ui.html.
+- The API can be seen at https://dna-detector.herokuapp.com/swagger-ui.html.
 - You can also try the entire REST API directly from the Swagger interface!
 
 ## Postman Documentation
