@@ -1,7 +1,11 @@
 package com.meli.dnadetector.service.unit;
 
 import com.meli.dnadetector.dto.DnaRequest;
+import com.meli.dnadetector.dto.DnaResponse;
+import com.meli.dnadetector.dto.StatsResponse;
 import com.meli.dnadetector.entity.Dna;
+
+import java.util.List;
 
 import static com.meli.dnadetector.utils.DnaMapper.getDnaStringFromArray;
 
@@ -21,5 +25,26 @@ public class DnaTestHelper {
 
     public static DnaRequest getValidDnaRequest() {
         return DnaRequest.builder().dna(validSimianDna).build();
+    }
+
+    public static Dna getInvalidEntityWithIsSimianFalse() {
+        return Dna.builder().dna(getDnaStringFromArray(invalidSimianDna)).isSimian(false).build();
+    }
+
+    public static StatsResponse getValidStatsResponse() {
+        return StatsResponse
+                .builder()
+                .count_mutant_dna(1)
+                .count_human_dna(2)
+                .ratio((double) (2))
+                .build();
+    }
+
+    public static DnaResponse getValidDnaResponse() {
+        return DnaResponse
+                .builder()
+                .isSimian(true)
+                .dna(validSimianDna)
+                .build();
     }
 }
