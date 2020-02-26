@@ -33,7 +33,7 @@ public class StatsService {
         double ratio = 0;
 
         if (humanCount != 0) {
-            ratio = (simianCount / humanCount);
+            ratio = ((double)simianCount / humanCount);
         }
         return ratio;
     }
