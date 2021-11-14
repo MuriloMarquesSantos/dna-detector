@@ -67,6 +67,10 @@ $ mvn clean package
 
 The project is 90% covered with tests.
 
+To run the tests please use
+
+```$ mvn clean test ``` or ```$ mvn test```
+
 ## Swagger
 - Swagger is already configured in this project in SwaggerConfig.java.
 - The API can be seen at https://dna-detector.herokuapp.com/swagger-ui.html.
